@@ -38,10 +38,10 @@
     .blank-state-icon
       = icon("globe")
     %h3.blank-state-title
-      There are
+      此服务器上有
       = number_with_delimiter(publicish_project_count)
-      public projects on this server.
+      个公开项目。
     %p.blank-state-text
-      Public projects are an easy way to allow everyone to have read-only access.
+      公开项目允许全部人都可以只读访问。
     = link_to trending_explore_projects_path, class: "btn btn-new" do
-      Browse projects
+      浏览公开项目
