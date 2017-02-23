@@ -1,37 +1,37 @@
 - publicish_project_count = ProjectsFinder.new.execute(current_user).count
 .blank-state.blank-state-welcome
   %h2.blank-state-welcome-title
-    Welcome to GitLab
+    欢迎使用 GitLab!
   %p.blank-state-text
-    Code, test, and deploy together
+    代码、测试和部署一体化！
 
 - if current_user.can_create_group?
   .blank-state
     .blank-state-icon
       = custom_icon("group", size: 50)
     %h3.blank-state-title
-      You can create a group for several dependent projects.
+      可以为多个相关项目创建一个组。
     %p.blank-state-text
-      Groups are the best way to manage projects and members.
+      组织管理项目成员的最好方式。
     = link_to new_group_path, class: "btn btn-new" do
-      New group
+      新建组
 
 .blank-state
   .blank-state-icon
     = custom_icon("project", size: 50)
   %h3.blank-state-title
-    You don't have access to any projects right now
+    你现在无法访问任何项目。
   %p.blank-state-text
     - if current_user.can_create_project?
-      You can create up to
+      你最多可以创建
       %strong= number_with_delimiter(current_user.projects_limit)
       = succeed "." do
         = "project".pluralize(current_user.projects_limit)
     - else
-      If you are added to a project, it will be displayed here.
+      如果您添加到一个项目，它将显示在这里。
   - if current_user.can_create_project?
     = link_to new_project_path, class: "btn btn-new" do
-      New project
+      新建项目
 
 - if publicish_project_count > 0
   .blank-state
